@@ -1,0 +1,110 @@
+
+<div class="business-api">
+  <h1 style="color:rgb(117, 117, 226);">Tista API</h1>
+  <br>
+  <label class="business-name-header">GET businessstatus call</label>
+  <br>
+  <div class="business-name-bd col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="row">
+      <label class="business-name-label">Enter BusinessName:</label>
+      <input type="text" class="form-control input-width" name="businessName" [(ngModel)]="businessName">
+      <button (click)="getUsers(businessName)" class="get-user-button">Get User</button>
+    </div>
+  </div>
+  <div class="business-name-bd" *ngIf="getUsersSuccess">
+    <label class="get-success-label">Get Call Response:</label>
+    <p class="response-data" *ngIf="errorMessage.length === 0">{{responseData}}</p>
+    <div *ngIf="errorMessage.length > 0" class="alert alert-danger" role="alert">
+      <p>errorMessage</p>
+      <p>statusText</p>
+    </div>
+  </div>
+  <br><br>
+  <label class="business-name-header">POST addbusiness call</label>
+  <div class="business-name-bd">
+    <form #myForm (ngSubmit)="onSubmitForm(myForm)">
+      <div class="form-group">
+        <label class="business-name-label" for="businessName">Business Name:</label>
+        <input type="text" class="form-control" id="businessName" class="input-width">
+      </div>
+      <div class="form-group">
+        <label class="business-name-label" for="acccountid">Accound Id:</label>
+        <input type="text" class="form-control" id="acccountid" class="input-width">
+      </div>
+      <div class="form-group">
+        <label class="business-name-label" for="companyname">Company Name:</label>
+        <input type="text" class="form-control" id="companyname" class="input-width">
+      </div>
+      <div class="form-group">
+        <label class="business-name-label" for="veteranemployees">Veteran Employees:</label>
+        <input type="text" class="form-control" id="veteranemployees" class="input-width">
+      </div>
+      <div class="form-group">
+        <label class="business-name-label" for="duns">Duns:</label>
+        <input type="text" class="form-control" id="duns" class="input-width">
+      </div>
+      <div class="form-group">
+        <label class="business-name-label" for="registration">Registration:</label>
+        <input type="text" class="form-control" id="registration" class="input-width">
+      </div>
+      <div class="form-group">
+        <label class="business-name-label" for="expirationdate">expirationdate:</label>
+        <input type="text" class="form-control" id="expirationdate" class="input-width">
+      </div>
+      <div class="form-group">
+        <label class="business-name-label" for="sdvosb">sdvosb:</label>
+        <input type="text" class="form-control" id="sdvosb" class="input-width">
+      </div>
+      <div class="form-group">
+        <label class="business-name-label" for="naics">naics:</label>
+        <input type="text" class="form-control" id="naics" class="input-width">
+      </div>
+      <div class="form-group">
+        <label class="business-name-label" for="hubzone">hubzone:</label>
+        <input type="text" class="form-control" id="hubzone" class="input-width">
+      </div>
+      <div class="form-group">
+        <label class="business-name-label" for="vosb">vosb:</label>
+        <input type="text" class="form-control" id="vosb" class="input-width">
+      </div>
+      <div class="form-group">
+        <label class="business-name-label" for="isverified">IsVerified:</label>
+        <input type="text" class="form-control" id="isverified" class="input-width">
+      </div>
+      <div class="form-group">
+        <label class="business-name-label" for="webaddress">Webaddress:</label>
+        <input type="text" class="form-control" id="webaddress" class="input-width">
+      </div>
+      <div class="form-group">
+        <label class="business-name-label" for="wosb">wosb:</label>
+        <input type="text" class="form-control" id="wosb" class="input-width">
+      </div>
+      <div class="form-group">
+        <label class="business-name-label" for="lastverified">lastverified:</label>
+        <input type="text" class="form-control" id="lastverified" class="input-width">
+      </div>
+      <div class="form-group">
+        <label class="business-name-label" for="yearestablished">yearestablished:</label>
+        <input type="text" class="form-control" id="yearestablished" class="input-width">
+      </div>
+      <div class="form-group">
+        <label class="business-name-label" for="mentorprotege">mentorprotege:</label>
+        <input type="text" class="form-control" id="mentorprotege" class="input-width">
+      </div>
+      <div class="form-group">
+        <label class="business-name-label" for="mosb">mosb:</label>
+        <input type="text" class="form-control" id="mosb" class="input-width">
+      </div>
+      <div class="form-group">
+        <label class="business-name-label" for="companyemail">companyemail:</label>
+        <input type="text" class="form-control" id="companyemail" class="input-width">
+      </div>
+      <button type="submit">Submit</button>
+      <!-- <p class="response-data" *ngIf="result">{{successResponse.form.req | json }}</p> -->
+    </form>
+  </div>
+  <div class="business-name-bd" *ngIf="result">
+    <label class="get-success-label">POST Call Response:</label>
+    <p class="response-data">{{successResponse.form.req | json }}</p>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+.input-width {
+    width: 200px ;
+}
+
+.business-name-bd {
+    margin-left: 50px;
+    margin-top: 10px;
+}
+
+.business-api {
+    margin-top: 20px;
+    margin-left: 50px;
+}
+
+.get-success-label {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.business-name-header{
+    font-weight: bold;
+    margin-top: 4px;
+}
+
+.business-name-label {
+    font-weight: bold;
+    margin-top: 4px;
+    margin-right: 4px;
+    font-size: 14px;
+    width: 150px;
+}
+
+.get-user-button {
+    margin-left: 16px;
+}
+
+.response-data {
+    background-color: rgb(218, 210, 210);
+}
