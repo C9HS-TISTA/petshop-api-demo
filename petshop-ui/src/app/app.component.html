@@ -7,8 +7,8 @@
   <div class="business-name-bd col-xs-12 col-sm-12 col-md-12 col-lg-12">
     <div class="row">
       <label class="business-name-label">Enter BusinessName:</label>
-      <input type="text" class="form-control input-width" name="businessName" [(ngModel)]="businessName">
-      <button (click)="getUsers(businessName)" class="get-user-button">Get User</button>
+      <input type="text" class="form-control input-width" name="businessName" [(ngModel)]="businessNameGT">
+      <button (click)="getUsers(businessNameGT)" class="get-user-button">Get User</button> 
     </div>
   </div>
   <div class="business-name-bd" *ngIf="getUsersSuccess">
@@ -22,84 +22,104 @@
   <br><br>
   <label class="business-name-header">POST addbusiness call</label>
   <div class="business-name-bd">
-    <form #myForm (ngSubmit)="onSubmitForm(myForm)">
+    <form #myForm="ngForm" (ngSubmit)="onSubmitForm(myForm)">
       <div class="form-group">
         <label class="business-name-label" for="businessName">Business Name:</label>
-        <input type="text" class="form-control" id="businessName" class="input-width">
+        <input type="text" class="form-control input-width" id="businessName" [(ngModel)]="business.businessName" 
+        #businessName="ngModel" required 
+        name="businessName">
       </div>
       <div class="form-group">
         <label class="business-name-label" for="acccountid">Accound Id:</label>
-        <input type="text" class="form-control" id="acccountid" class="input-width">
+        <input type="text" class="form-control input-width" id="acccountid" [(ngModel)]="business.businessInfo.acccountid" 
+        #acccountid="ngModel" name="acccountid">
       </div>
       <div class="form-group">
         <label class="business-name-label" for="companyname">Company Name:</label>
-        <input type="text" class="form-control" id="companyname" class="input-width">
+        <input type="text" class="form-control input-width" id="companyname" [(ngModel)]="business.businessInfo.companyname" 
+        #companyname="ngModel" name="companyname">
       </div>
       <div class="form-group">
         <label class="business-name-label" for="veteranemployees">Veteran Employees:</label>
-        <input type="text" class="form-control" id="veteranemployees" class="input-width">
+        <input type="text" class="form-control input-width" id="veteranemployees" [(ngModel)]="business.businessInfo.veteranemployees" 
+        #veteranemployees="ngModel" name="veteranemployees">
       </div>
       <div class="form-group">
         <label class="business-name-label" for="duns">Duns:</label>
-        <input type="text" class="form-control" id="duns" class="input-width">
+        <input type="text" class="form-control input-width" id="duns" [(ngModel)]="business.businessInfo.duns" 
+        #duns="ngModel" name="duns">
       </div>
       <div class="form-group">
         <label class="business-name-label" for="registration">Registration:</label>
-        <input type="text" class="form-control" id="registration" class="input-width">
+        <input type="text" class="form-control input-width" id="registration" [(ngModel)]="business.businessInfo.registration" 
+        #registration="ngModel" name="registration">
       </div>
       <div class="form-group">
         <label class="business-name-label" for="expirationdate">expirationdate:</label>
-        <input type="text" class="form-control" id="expirationdate" class="input-width">
+        <input type="text" class="form-control input-width" id="expirationdate" [(ngModel)]="business.businessInfo.expirationdate" 
+        #expirationdate="ngModel" name="expirationdate">
       </div>
       <div class="form-group">
         <label class="business-name-label" for="sdvosb">sdvosb:</label>
-        <input type="text" class="form-control" id="sdvosb" class="input-width">
+        <input type="text" class="form-control input-width" id="sdvosb" [(ngModel)]="business.businessInfo.sdvosb" 
+        #sdvosb="ngModel" name="sdvosb">
       </div>
       <div class="form-group">
         <label class="business-name-label" for="naics">naics:</label>
-        <input type="text" class="form-control" id="naics" class="input-width">
+        <input type="text" class="form-control input-width" id="naics" [(ngModel)]="business.businessInfo.naics" 
+        #naics="ngModel" name="naics">
       </div>
       <div class="form-group">
         <label class="business-name-label" for="hubzone">hubzone:</label>
-        <input type="text" class="form-control" id="hubzone" class="input-width">
+        <input type="text" class="form-control input-width" id="hubzone" [(ngModel)]="business.businessInfo.hubzone" 
+        #hubzone="ngModel" name="hubzone">
       </div>
       <div class="form-group">
         <label class="business-name-label" for="vosb">vosb:</label>
-        <input type="text" class="form-control" id="vosb" class="input-width">
+        <input type="text" class="form-control input-width" id="vosb" [(ngModel)]="business.businessInfo.vosb" 
+        #vosb="ngModel" name="vosb">
       </div>
       <div class="form-group">
         <label class="business-name-label" for="isverified">IsVerified:</label>
-        <input type="text" class="form-control" id="isverified" class="input-width">
+        <input type="text" class="form-control input-width" id="isverified" [(ngModel)]="business.businessInfo.isverified" 
+        #isverified="ngModel" name="isverified">
       </div>
       <div class="form-group">
         <label class="business-name-label" for="webaddress">Webaddress:</label>
-        <input type="text" class="form-control" id="webaddress" class="input-width">
+        <input type="text" class="form-control input-width" id="webaddress" [(ngModel)]="business.businessInfo.webaddress" 
+        #webaddress="ngModel" name="webaddress">
       </div>
       <div class="form-group">
         <label class="business-name-label" for="wosb">wosb:</label>
-        <input type="text" class="form-control" id="wosb" class="input-width">
+        <input type="text" class="form-control input-width" id="wosb" [(ngModel)]="business.businessInfo.wosb" 
+        #wosb="ngModel" name="wosb">
       </div>
       <div class="form-group">
         <label class="business-name-label" for="lastverified">lastverified:</label>
-        <input type="text" class="form-control" id="lastverified" class="input-width">
+        <input type="text" class="form-control input-width" id="lastverified" [(ngModel)]="business.businessInfo.lastverified" 
+        #lastverified="ngModel" name="lastverified">
       </div>
       <div class="form-group">
         <label class="business-name-label" for="yearestablished">yearestablished:</label>
-        <input type="text" class="form-control" id="yearestablished" class="input-width">
+        <input type="text" class="form-control input-width" id="yearestablished" [(ngModel)]="business.businessInfo.yearestablished" 
+        #yearestablished="ngModel" name="yearestablished">
       </div>
       <div class="form-group">
         <label class="business-name-label" for="mentorprotege">mentorprotege:</label>
-        <input type="text" class="form-control" id="mentorprotege" class="input-width">
+        <input type="text" class="form-control input-width" id="mentorprotege" [(ngModel)]="business.businessInfo.mentorprotege" 
+        #mentorprotege="ngModel" name="mentorprotege">
       </div>
       <div class="form-group">
         <label class="business-name-label" for="mosb">mosb:</label>
-        <input type="text" class="form-control" id="mosb" class="input-width">
+        <input type="text" class="form-control input-width" id="mosb" [(ngModel)]="business.businessInfo.mosb" 
+        #mosb="ngModel" name="mosb">
       </div>
       <div class="form-group">
         <label class="business-name-label" for="companyemail">companyemail:</label>
-        <input type="text" class="form-control" id="companyemail" class="input-width">
+        <input type="text" class="form-control input-width" id="companyemail" [(ngModel)]="business.businessInfo.companyemail" 
+        #companyemail="ngModel" name="companyemail">
       </div>
-      <button type="submit">Submit</button>
+      <button type="submit" class="btn btn-primary" [disabled]="!myForm.form.valid">Submit</button>
       <!-- <p class="response-data" *ngIf="result">{{successResponse.form.req | json }}</p> -->
     </form>
   </div>

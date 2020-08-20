@@ -2,13 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ApiCallsService } from './api-calls.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
+import { BusinessInfomation } from './business.model';
 
-export interface  BusinessInfo {
-  businesName: string;
-  accoundId : string;
-  companyName: string;
-  
-}
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -16,6 +11,31 @@ export interface  BusinessInfo {
 })
 export class AppComponent implements OnInit {
   // title = 'petshop-ui';
+
+  business: BusinessInfomation = {
+    businessName : '',
+    businessInfo : {
+        acccountid : '',
+        companyname : '',
+        veteranemployees : '',
+        duns : '',
+        registration : '',
+        expirationdate : '',
+        sdvosb : '',
+        naics : '',
+        hubzone : '',
+        vosb : '',
+        isverified : '',
+        webaddress : '',
+        wosb : '',
+        lastverified : '',
+        yearestablished : '',
+        mentorprotege : '',
+        mosb : '',
+        companyemail : ''
+     }
+  };
+  businessNameGT: string;
   businessName: string;
   responseData: string;
   post_response: string;
@@ -71,37 +91,34 @@ export class AppComponent implements OnInit {
     );
   }
 
-  onSubmitForm(formData:NgForm) {
-    this.reqObj.businessName = formData[0].value;
-    this.reqObj.businessInfo.acccountid = formData[1].value;
-    this.reqObj.businessInfo.companyname = formData[2].value;
-    this.reqObj.businessInfo.veteranemployees = formData[3].value;
-    this.reqObj.businessInfo.duns = formData[4].value;
-    this.reqObj.businessInfo.registration = formData[5].value;
-    this.reqObj.businessInfo.expirationdate = formData[6].value;
-    this.reqObj.businessInfo.sdvosb = formData[7].value;
-    this.reqObj.businessInfo.naics = formData[8].value;
-    this.reqObj.businessInfo.hubzone = formData[9].value;
-    this.reqObj.businessInfo.vosb = formData[10].value;
-    this.reqObj.businessInfo.isverified = formData[11].value;
-    this.reqObj.businessInfo.webaddress = formData[12].value;
-    this.reqObj.businessInfo.wosb = formData[13].value;
-    this.reqObj.businessInfo.lastverified = formData[14].value;
-    this.reqObj.businessInfo.yearestablished = formData[15].value;
-    this.reqObj.businessInfo.mentorprotege = formData[16].value;
-    this.reqObj.businessInfo.mosb = formData[17].value;
-    this.reqObj.businessInfo.companyemail = formData[18].value;
+  onSubmitForm(BusinessForm:NgForm) {
+    this.business.businessName = BusinessForm.value.businessName;
+    this.business.businessInfo.acccountid = BusinessForm.value.acccountid;
+    this.business.businessInfo.companyname = BusinessForm.value.companyname;
+    this.business.businessInfo.veteranemployees = BusinessForm.value.veteranemployees;
+    this.business.businessInfo.duns = BusinessForm.value.duns;
+    this.business.businessInfo.registration = BusinessForm.value.registration;
+    this.business.businessInfo.expirationdate = BusinessForm.value.expirationdate;
+    this.business.businessInfo.sdvosb = BusinessForm.value.sdvosb;
+    this.business.businessInfo.naics = BusinessForm.value.naics;
+    this.business.businessInfo.hubzone = BusinessForm.value.hubzone;
+    this.business.businessInfo.vosb = BusinessForm.value.vosb;
+    this.business.businessInfo.isverified = BusinessForm.value.isverified;
+    this.business.businessInfo.webaddress = BusinessForm.value.webaddress;
+    this.business.businessInfo.wosb = BusinessForm.value.wosb;
+    this.business.businessInfo.lastverified = BusinessForm.value.lastverified;
+    this.business.businessInfo.yearestablished = BusinessForm.value.yearestablished;
+    this.business.businessInfo.mentorprotege = BusinessForm.value.mentorprotege;
+    this.business.businessInfo.mosb = BusinessForm.value.mosb;
+    this.business.businessInfo.companyemail = BusinessForm.value.companyemail;
 
-    this.apiCallsService.sendRequest(this.reqObj).subscribe(
+    this.apiCallsService.sendRequest(this.business).subscribe(
       data => {
         if (data !== undefined) {
           this.result = true;
           this.successResponse = data;
-          
         }
-       
       console.log('Response from addbusiness post call' + data);
-
     }, error => {
       this.result = false;
       console.log('Response from addbusiness post call' + error);
