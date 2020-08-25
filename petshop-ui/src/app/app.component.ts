@@ -80,13 +80,13 @@ export class AppComponent implements OnInit {
     this.apiCallsService.getRequest(name).subscribe(
       data => {
         this.getUsersSuccess = true;
-      this.responseData = JSON.stringify(data);
+       this.responseData = JSON.stringify(data);
     },
     error => {
       this.getUsersSuccess = false;
       this.errorMessage = error.message;
-      this.statusText = error.statusText;
-      console.log('response from GET businessstatus call' + error);
+      this.statusText = error.status;
+      console.log('response from GET businessstatus call' + error.response);
     }
     );
   }

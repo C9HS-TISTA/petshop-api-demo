@@ -13,11 +13,11 @@
   </div>
   <div class="business-name-bd" *ngIf="getUsersSuccess">
     <label class="get-success-label">Get Call Response:</label>
-    <p class="response-data" *ngIf="errorMessage.length === 0">{{responseData}}</p>
-    <div *ngIf="errorMessage.length > 0" class="alert alert-danger" role="alert">
-      <p>errorMessage</p>
-      <p>statusText</p>
-    </div>
+    <p class="response-data">{{responseData | json}}</p>
+  </div>
+  <div class="business-name-bd" *ngIf="getUsersSuccess === false" role="alert">
+    <p class="response-data">{{errorMessage}}</p>
+    <p class="response-data">{{statusText}}</p>
   </div>
   <br><br>
   <label class="business-name-header">POST addbusiness call</label>
