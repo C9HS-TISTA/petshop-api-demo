@@ -13,41 +13,9 @@ export class AppComponent implements OnInit {
   // title = 'petshop-ui';
 
   business: BusinessInfomation = {
-    businessName : '',
-    businessInfo : {
-        acccountid : '',
-        companyname : '',
-        veteranemployees : '',
-        duns : '',
-        registration : '',
-        expirationdate : '',
-        sdvosb : '',
-        naics : '',
-        hubzone : '',
-        vosb : '',
-        isverified : '',
-        webaddress : '',
-        wosb : '',
-        lastverified : '',
-        yearestablished : '',
-        mentorprotege : '',
-        mosb : '',
-        companyemail : ''
-     }
-  };
-  businessNameGT: string;
-  businessName: string;
-  responseData: string;
-  post_response: string;
-  responseObj: any;
-  result = false;
-  getUsersSuccess = false;
-  errorMessage = '';
-  statusText = '';
-  reqObj = {
     businessName: '',
-    businessInfo : {
-      acccountid : '',
+    businessInfo: {
+      acccountid: '',
       companyname: '',
       veteranemployees: '',
       duns: '',
@@ -66,32 +34,41 @@ export class AppComponent implements OnInit {
       mosb: '',
       companyemail: ''
     }
-  }
+  };
+  businessNameGT: string;
+  businessName: string;
+  responseData: string;
+  post_response: string;
+  responseObj: any;
+  result = false;
+  getBusinessSuccess = false;
+  errorMessage = '';
+  statusText = '';
   successResponse: any;
-  constructor( private apiCallsService: ApiCallsService, private http: HttpClient) {
-   }
+  constructor(private apiCallsService: ApiCallsService, private http: HttpClient) {
+  }
 
   ngOnInit(): void {
-    
+
   }
 
-   getUsers(name: string): void {
+  getBusiness(name: string): void {
     console.log(name);
-    this.apiCallsService.getRequest(name).subscribe(
+    this.apiCallsService.getBusinessCall(name).subscribe(
       data => {
-        this.getUsersSuccess = true;
-       this.responseData = JSON.stringify(data);
-    },
-    error => {
-      this.getUsersSuccess = false;
-      this.errorMessage = error.message;
-      this.statusText = error.status;
-      console.log('response from GET businessstatus call' + error.response);
-    }
+        this.getBusinessSuccess = true;
+        this.responseData = data;
+      },
+      error => {
+        this.getBusinessSuccess = false;
+        this.errorMessage = error.message;
+        this.statusText = error.status;
+        console.log('response from GET businessstatus call' + error.response);
+      }
     );
   }
 
-  onSubmitForm(BusinessForm:NgForm) {
+  onSubmitForm(BusinessForm: NgForm) {
     this.business.businessName = BusinessForm.value.businessName;
     this.business.businessInfo.acccountid = BusinessForm.value.acccountid;
     this.business.businessInfo.companyname = BusinessForm.value.companyname;
@@ -112,16 +89,16 @@ export class AppComponent implements OnInit {
     this.business.businessInfo.mosb = BusinessForm.value.mosb;
     this.business.businessInfo.companyemail = BusinessForm.value.companyemail;
 
-    this.apiCallsService.sendRequest(this.business).subscribe(
+    this.apiCallsService.addBusiness(this.business).subscribe(
       data => {
         if (data !== undefined) {
           this.result = true;
           this.successResponse = data;
         }
-      console.log('Response from addbusiness post call' + data);
-    }, error => {
-      this.result = false;
-      console.log('Response from addbusiness post call' + error);
-    });
+        console.log('Response from addbusiness post call ' + JSON.stringify(data));
+      }, error => {
+        this.result = false;
+        console.log('Response from addbusiness post call' + error);
+      });
   }
 }

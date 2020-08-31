@@ -5,6 +5,7 @@
 .business-name-bd {
     margin-left: 50px;
     margin-top: 10px;
+    margin-right: 50px;
 }
 
 .business-api {
@@ -36,4 +37,10 @@
 
 .response-data {
     background-color: rgb(218, 210, 210);
+}
+
+.business-footer {
+    height: 40px;
+    margin-top: 40px;
+    background-color: rgb(248, 212, 212);
 }
